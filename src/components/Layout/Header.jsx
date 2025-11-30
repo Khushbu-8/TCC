@@ -89,7 +89,7 @@ const Header = () => {
                     <NavLink
                       to={item.to}
                       className={({ isActive }) =>
-                        `${isActive ? "text-[#D80505]" : "text-black"}`
+                        `${isActive ? "text-black" : "text-black"}`
                       }
                     >
                       {item.label}
@@ -128,7 +128,7 @@ const Header = () => {
                   to={item.to}
                   className={({ isActive }) =>
                     `transition ${
-                      isActive ? "text-[#D80505]" : "text-black"
+                      isActive ? "text-black" : "text-black"
                     } hover:text-[#D80505]`
                   }
                 >
