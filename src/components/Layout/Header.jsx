@@ -65,9 +65,9 @@ const Header = () => {
       </div>
 
       {/* ============================= MAIN NAVBAR ============================= */}
-      <header className="bg-white w-full py-4 flex flex-wrap items-center md:justify-between px-4 lg:px-12">
+      <header className="bg-white w-full py-4 flex flex-wrap items-center justify-between px-4 lg:px-12">
         {/* Mobile Menu Button */}
-        <button className="xl:hidden" onClick={() => setMenuOpen(true)}>
+        <button className="hidden" onClick={() => setMenuOpen(true)}>
           <BiMenuAltLeft size={30} />
         </button>
 
@@ -140,7 +140,7 @@ const Header = () => {
         </div>
 
         {/* CTA BUTTON RIGHT */}
-        <div className="hidden md:flex">
+        <div className="">
           <Button
             text="Get A Quote"
             onClick={() => (window.location.href = "/contact")}
