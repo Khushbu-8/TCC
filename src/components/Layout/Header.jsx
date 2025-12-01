@@ -20,13 +20,22 @@ const Header = () => {
 
   const menu = [
     { label: "Home", to: "/" },
-    { label: "About Us", to: "/about" },
+    { label: "About Us", to: "/" },
     { label: "Products", to: "/" },
     { label: "Gallery", to: "/" },
     { label: "Blog", to: "/" },
     { label: "FAQs", to: "/" },
     { label: "Contact Us", to: "/" },
   ];
+  // const menu = [
+  //   { label: "Home", to: "/" },
+  //   { label: "About Us", to: "/about" },
+  //   { label: "Products", to: "/products" },
+  //   { label: "Gallery", to: "/gallery" },
+  //   { label: "Blog", to: "/blog" },
+  //   { label: "FAQs", to: "/faqs" },
+  //   { label: "Contact Us", to: "/contact" },
+  // ];
 
   return (
     <>
@@ -65,9 +74,9 @@ const Header = () => {
       </div>
 
       {/* ============================= MAIN NAVBAR ============================= */}
-      <header className="bg-white w-full py-4 flex flex-wrap items-center justify-between px-4 lg:px-12">
+      <header className="bg-white w-full py-4 flex flex-wrap items-center md:justify-between px-4 lg:px-12">
         {/* Mobile Menu Button */}
-        <button className="hidden" onClick={() => setMenuOpen(true)}>
+        <button className="xl:hidden" onClick={() => setMenuOpen(true)}>
           <BiMenuAltLeft size={30} />
         </button>
 
@@ -140,7 +149,7 @@ const Header = () => {
         </div>
 
         {/* CTA BUTTON RIGHT */}
-        <div className="">
+        <div className="hidden md:flex">
           <Button
             text="Get A Quote"
             onClick={() => (window.location.href = "/contact")}

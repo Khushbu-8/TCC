@@ -22,10 +22,11 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<AboutUsPage />} />
+          {/* <Route index element={<Home />} /> */}
           <Route path="about" element={<AboutUsPage />} />
           {/* <Route path="products" element={<Products />} /> */}
           {/* <Route path="gallery" element={<GalleryPage />} /> */}
-          {/* <Route path="faqs" element={<FAQs />} /> */}
+          <Route path="faqs" element={<FAQs />} />
           {/* <Route path="contact" element={<Contact />} /> */}
         </Route>
       </Routes>
