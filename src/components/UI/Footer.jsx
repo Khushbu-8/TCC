@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import logo from "../../../public/header/logo-footer.png";
 
 // SOCIAL ICONS
@@ -17,23 +18,48 @@ import G6 from "../../../public/gallery/galleryImage6.jpg";
 
 const galleryImages = [G1, G2, G3, G4, G5, G6];
 
+// Smooth Fade
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease:[0.22,1,0.36,1] } },
+};
+
+// Stagger container for whole footer
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.20, delayChildren:0.15 }
+  }
+};
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-black text-white">
+    <footer className="w-full bg-black text-white overflow-hidden">
 
       {/* TOP BAR */}
-      <div className="bg-[#182683] text-center text-white py-3 text-sm font-medium tracking-wide">
+      <motion.div
+        initial={{ opacity:0, y:-20 }}
+        whileInView={{ opacity:1, y:0 }}
+        transition={{ duration:0.9, ease:"easeOut" }}
+        viewport={{ once:false, amount:0.3 }}
+        className="bg-[#182683] text-center text-white py-3 text-sm font-medium tracking-wide"
+      >
         We Provide Best Quality Services
-      </div>
+      </motion.div>
 
       {/* MAIN GRID */}
-      <div
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once:false, amount:0.3 }}
         className="max-w-[1450px] mx-auto px-6 lg:px-16 py-16 
         grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-y-14 gap-x-10"
       >
 
-        {/* LEFT SECTION = wider (as in reference) */}
-        <div className="lg:col-span-2">
+        {/* LEFT SECTION */}
+        <motion.div variants={fadeUp} className="lg:col-span-2">
           <img src={logo} alt="logo" className="h-14" />
 
           <p className="text-gray text-[15px] leading-relaxed mt-4 max-w-sm">
@@ -42,71 +68,82 @@ const Footer = () => {
           </p>
 
           {/* SOCIAL ICONS */}
-          <div className="flex items-center gap-4 mt-6">
+          <motion.div
+            variants={container}
+            className="flex items-center gap-4 mt-6"
+          >
             {[LinkedinIcon, WhatsappIcon, GmailIcon, TwitterIcon].map((icon, i) => (
-              <span
+              <motion.span
                 key={i}
+                variants={fadeUp}
+                whileHover={{ scale:1.15, rotate:2, transition:{duration:0.25}}}
                 className="w-10 h-10 border border-white/60 rounded-full 
                 flex justify-center items-center cursor-pointer 
                 hover:bg-white hover:opacity-100 transition-all duration-300"
               >
                 <img src={icon} className="w-[19px]" />
-              </span>
+              </motion.span>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Company */}
-        <div className="lg:col-span-1">
+        <motion.div variants={fadeUp} className="lg:col-span-1">
           <h4 className="text-[20px] font-medium mb-5">Company</h4>
           <ul className="space-y-3 text-gray">
-            <li className="hover:text-white cursor-pointer">→ About Us</li>
-            <li className="hover:text-white cursor-pointer">→ Products</li>
-            <li className="hover:text-white cursor-pointer">→ Privacy Policy</li>
-            <li className="hover:text-white cursor-pointer">→ Blogs</li>
-            <li className="hover:text-white cursor-pointer">→ Contact Us</li>
+            {["About Us","Products","Privacy Policy","Blogs","Contact Us"].map(item => (
+              <motion.li
+                variants={fadeUp}
+                whileHover={{ x:5, color:"#fff" }}
+                className="cursor-pointer"
+              >→ {item}</motion.li>
+            ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* Get Help */}
-        <div className="lg:col-span-1">
+        <motion.div variants={fadeUp} className="lg:col-span-1">
           <h4 className="text-[20px] font-medium mb-5">Get Help</h4>
           <ul className="space-y-3 text-gray">
-            <li className="hover:text-white cursor-pointer text-gray">→ FAQs</li>
-            <li className="hover:text-white cursor-pointer">→ Terms & Conditions</li>
-            <li className="hover:text-white cursor-pointer">→ Privacy Policy</li>
+            {["FAQs","Terms & Conditions","Privacy Policy"].map(item => (
+              <motion.li
+                variants={fadeUp}
+                whileHover={{ x:5, color:"#fff" }}
+                className="cursor-pointer"
+              >→ {item}</motion.li>
+            ))}
           </ul>
-        </div>
+        </motion.div>
 
-        {/* GALLERY (perfect balanced grid as screenshot) */}
-        <div className="lg:col-span-2 flex flex-col items-start lg:items-start">
+        {/* Gallery */}
+        <motion.div variants={fadeUp} className="lg:col-span-2">
           <h4 className="text-[20px] font-medium mb-5">Gallery</h4>
 
-          <div
-            className="grid grid-cols-3 gap-x-5 gap-y-6 md:gap-x-6 md:gap-y-7">
-            {galleryImages.map((img, i) => (
-              <img
+          <div className="grid grid-cols-3 gap-x-5 gap-y-6 md:gap-x-6 md:gap-y-7">
+            {galleryImages.map((img,i)=>(
+              <motion.img
                 key={i}
                 src={img}
-                className="
-                  w-[92px] h-[92px] md:w-[95px] md:h-[95px]
-                  rounded-lg object-cover 
-                  hover:opacity-90 transition-all duration-300
-                "
-                alt="gallery"
+                variants={fadeUp}
+                whileHover={{ scale:1.08 }}
+                className="w-[92px] h-[92px] md:w-[95px] md:h-[95px]
+                rounded-lg object-cover transition-all duration-300"
               />
             ))}
           </div>
-        </div>
-
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* COPYRIGHT */}
-      <div className="border-t border-white/25 px-6"></div>
-      <p className="text-center py-4 text-sm text-gray">
-        © 2025 TTC. All rights reserved
-      </p>
-
+      <motion.div
+        initial={{ opacity:0 }}
+        whileInView={{ opacity:1 }}
+        transition={{ duration:1.2 }}
+        viewport={{ once:false, amount:0.3 }}
+      >
+        <div className="border-t border-white/25"></div>
+        <p className="text-center py-4 text-sm text-gray">© 2025 TTC. All rights reserved</p>
+      </motion.div>
     </footer>
   );
 };
