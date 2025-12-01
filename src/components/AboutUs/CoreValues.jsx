@@ -64,13 +64,13 @@ const CoreValues = () => {
       </div>
 
       {/* TEXT POSITIONS (DESKTOP remains same) */}
-      <div className="hidden lg:flex absolute top-[48%] xl:top-[44%] left-[2%] w-full lg:px-28 xl:px-36 justify-between">
+      <div className="hidden lg:flex absolute top-[48%] xl:top-[44%] left-[2%] xl:left-[0] w-full lg:px-28 xl:px-36 justify-between">
 
         {/* LEFT TEXT – SAME */}
-        <div className="flex flex-col gap-[70px] xl:gap-[100px]">
+        <div className="flex flex-col gap-[70px] xl:gap-[120px]">
           <div>
             <h3 className="text-lg xl:text-[22px]  font-semibold text-black">Simplicity</h3>
-            <p className="lg:w-[250px] md:w-[270px] text-gray leading-[1.55] sm:text-sm ">
+            <p className="lg:w-[250px] md:w-[270px] text-gray leading-[1.55] sm:text-sm lg:text-[16px]">
               Our Platforms Are Easy-To-Use For Traders Of Different Skill Levels.
               We Explain Complex Ideas Simply.
             </p>
@@ -85,7 +85,7 @@ const CoreValues = () => {
         </div>
 
         {/* RIGHT TEXT – SAME */}
-        <div className="flex flex-col items-end text-left gap-[70px] xl:gap-[100px] ">
+        <div className="flex flex-col items-end text-left gap-[70px] xl:gap-[120px] ">
           <div>
             <h3 className="text-lg xl:text-[22px] font-semibold text-back">Relatability</h3>
             <p className="lg:w-[250px] md:w-[270px] text-gray leading-[1.55] sm:text-sm ">
