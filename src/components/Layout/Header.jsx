@@ -11,31 +11,24 @@ import Whatsapp from "../../../public/social/whatsapp.png";
 import Mail from "../../../public/social/gmail.png";
 import X from "../../../public/social/x.png";
 // ↓ import arrow icon
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 
 import Button from "../UI/Button";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+ const [openDropdown, setOpenDropdown] = useState(false);
+
 
   const menu = [
     { label: "Home", to: "/" },
-    { label: "About Us", to: "/" },
-    { label: "Products", to: "/" },
-    { label: "Gallery", to: "/" },
-    { label: "Blog", to: "/" },
-    { label: "FAQs", to: "/" },
-    { label: "Contact Us", to: "/" },
+    { label: "About Us", to: "/about" },
+    { label: "Products", to: "/products" },
+    { label: "Gallery", to: "/gallery" },
+    { label: "Blog", to: "/blog" },
+    { label: "FAQs", to: "/faqs" },
+    { label: "Contact Us", to: "/contact" },
   ];
-  // const menu = [
-  //   { label: "Home", to: "/" },
-  //   { label: "About Us", to: "/about" },
-  //   { label: "Products", to: "/products" },
-  //   { label: "Gallery", to: "/gallery" },
-  //   { label: "Blog", to: "/blog" },
-  //   { label: "FAQs", to: "/faqs" },
-  //   { label: "Contact Us", to: "/contact" },
-  // ];
 
   return (
     <>
@@ -76,7 +69,7 @@ const Header = () => {
       {/* ============================= MAIN NAVBAR ============================= */}
       <header className="bg-white w-full py-4 flex flex-wrap items-center justify-between px-4 lg:px-12">
         {/* Mobile Menu Button */}
-        <button className="hidden" onClick={() => setMenuOpen(true)}>
+        <button className="lg:hidden" onClick={() => setMenuOpen(true)}>
           <BiMenuAltLeft size={30} />
         </button>
 
@@ -156,6 +149,77 @@ const Header = () => {
           />
         </div>
       </header>
+
+       {/* ============================= MOBILE NAV MENU ============================= */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-[999]"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
+      <div
+        className={`fixed top-0 left-0 w-full bg-white z-[1000] p-6 space-y-6 shadow-xl transition-all duration-500 ${
+          menuOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4"
+          onClick={() => setMenuOpen(false)}
+        >
+          <IoMdClose size={30} />
+        </button>
+
+        {/* Mobile Menu Items */}
+        <nav className="flex flex-col gap-5 text-lg font-semibold">
+
+          {menu.map((item) =>
+            item.label === "Products" ? (
+              <div key={item.label}>
+                <div
+                  className="flex justify-between items-center"
+                  onClick={() => setOpenDropdown(!openDropdown)}
+                >
+                  <span>Products</span>
+                  <IoIosArrowDown
+                    className={`transition ${openDropdown ? "rotate-180" : ""}`}
+                  />
+                </div>
+
+                {openDropdown && (
+                  <div className="ml-4 mt-2 flex flex-col gap-2">
+                    {[
+                      "Product One",
+                      "Product Two",
+                      "Product Three",
+                      "Product Four",
+                    ].map((p, i) => (
+                      <NavLink
+                        key={i}
+                        to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
+                        onClick={() => setMenuOpen(false)}
+                        className="text-gray-600 hover:text-black"
+                      >
+                        {p}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#D80505]"
+              >
+                {item.label}
+              </NavLink>
+            )
+          )}
+        </nav>
+      </div>
     </>
   );
 };

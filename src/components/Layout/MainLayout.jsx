@@ -14,7 +14,8 @@ const MainLayout = () => {
 
       {/* Main Content with padding to avoid overlap */}
       <main className="flex-grow w-full flex justify-center pt-[40px]  md:pt-[100px]"> 
-        <div className="w-full max-w-[1440px]">
+        <div className="w-full">
+        {/* <div className="w-full max-w-[1440px]"> */}
           <Outlet />
         </div>
       </main>

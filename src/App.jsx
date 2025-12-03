@@ -21,8 +21,8 @@ function App() {
       <ScrollUp />
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<AboutUsPage />} />
-          {/* <Route index element={<Home />} /> */}
+          {/* <Route index element={<AboutUsPage />} /> */}
+          <Route index element={<Home />} />
           <Route path="about" element={<AboutUsPage />} />
           {/* <Route path="products" element={<Products />} /> */}
           {/* <Route path="gallery" element={<GalleryPage />} /> */}
