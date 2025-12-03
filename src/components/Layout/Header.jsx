@@ -124,7 +124,8 @@ const Header = () => {
                     ].map((p, i) => (
                       <NavLink
                         key={i}
-                        to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
+                        to={`/`}
+                        // to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
                         className="block px-6 py-2 hover:bg-[#D80505] hover:text-white transition"
                       >
                         {p}
@@ -206,7 +207,8 @@ const Header = () => {
                     ].map((p, i) => (
                       <NavLink
                         key={i}
-                        to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
+                        to={`/`}
+                        // to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
                         onClick={() => setMenuOpen(false)}
                         className="text-gray-600 hover:text-black"
                       >
