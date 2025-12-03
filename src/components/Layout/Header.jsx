@@ -23,12 +23,21 @@ const Header = () => {
   const menu = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
-    { label: "Products", to: "/products" },
-    { label: "Gallery", to: "/gallery" },
-    { label: "Blog", to: "/blog" },
-    { label: "FAQs", to: "/faqs" },
-    { label: "Contact Us", to: "/contact" },
+    { label: "Products", to: "/" },
+    { label: "Gallery", to: "/" },
+    { label: "Blog", to: "/" },
+    { label: "FAQs", to: "/" },
+    { label: "Contact Us", to: "/" },
   ];
+  // const menu = [
+  //   { label: "Home", to: "/" },
+  //   { label: "About Us", to: "/about" },
+  //   { label: "Products", to: "/products" },
+  //   { label: "Gallery", to: "/gallery" },
+  //   { label: "Blog", to: "/blog" },
+  //   { label: "FAQs", to: "/faqs" },
+  //   { label: "Contact Us", to: "/contact" },
+  // ];
 
   return (
     <>
@@ -145,7 +154,7 @@ const Header = () => {
         <div className="">
           <Button
             text="Get A Quote"
-            onClick={() => (window.location.href = "/contact")}
+            onClick={() => (window.location.href = "/")}
           />
         </div>
       </header>
