@@ -90,7 +90,7 @@ const AboutIntroSection = ({ hidden }) => {
           {/* BUTTON */}
           {!hidden && (
             <motion.div variants={smoothFadeUp} className="pt-5">
-              <Button text="Get A Quote" onClick={() => (window.location.href = "/contact")} />
+              <Button text="Get A Quote" onClick={() => (window.location.href = "/")} />
             </motion.div>
           )}
 

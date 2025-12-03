@@ -106,7 +106,7 @@ const LatestBlogsSection = () => {
         <div className="flex justify-center mt-14">
           <Button
             text="View More"
-            onClick={() => (window.location.href = "/contact")}
+            onClick={() => (window.location.href = "/")}
           />
         </div>
       </div>

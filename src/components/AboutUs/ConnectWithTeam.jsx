@@ -44,7 +44,7 @@ const ConnectWithTeam = () => {
              <div className="py-5">
                <Button
                 text="Get A Quote"
-                onClick={() => (window.location.href = "/contact")}
+                onClick={() => (window.location.href = "/")}
               />
              </div>
           </motion.div>
