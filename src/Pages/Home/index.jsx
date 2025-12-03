@@ -53,9 +53,9 @@ const Home = () => {
       <TestimonialsSlider />
 
       <BrandLogoSection />
-
+ <div className="container">
       <FAQSection faqData={faqData} buttonText="View More" />
-
+</div>
       <ConnectWithTeam />
 
       <div className="container">

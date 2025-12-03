@@ -10,8 +10,13 @@ const FAQSection = ({ faqData = [], buttonText }) => {
   };
 
   return (
-    <section className="w-full bg-white py-14 flex flex-col items-center">
-      <TitleHeading tagline="FAQs" heading="Frequently Asked Questions" />
+    <section className="w-full bg-white py-14 flex flex-col items-center px-3 md:px-0">
+      <TitleHeading
+        tag="FAQs"
+        heading="Frequently Asked Questions"
+        align="center"
+        text="text-black"
+      />
 
       {/* FAQ List */}
       <div className="w-full max-w-4xl flex flex-col gap-4 mt-10">
@@ -28,7 +33,7 @@ const FAQSection = ({ faqData = [], buttonText }) => {
           >
             {/* Question */}
             <div className="flex justify-between items-center">
-              <h3 className="text-[20px] sm:text-md font-semibold text-[#000]">
+              <h3 className="sm:text-md md:text-[20px] sm:text-md font-semibold text-[#000]">
                 {item.question}
               </h3>
 
