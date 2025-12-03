@@ -90,7 +90,7 @@ const TestimonialsSlider = () => {
       </div>
 
       {/* Slider */}
-      <div className="relative max-w-[1900px] mx-auto py-5 overflow-hidden">
+      <div className="relative max-w-[1500px] mx-auto py-5 overflow-hidden">
         <Swiper
           modules={[Navigation, Autoplay]}
           slidesPerView={5}
@@ -126,7 +126,7 @@ const TestimonialsSlider = () => {
                   {/* Card */}
                   {/* Card Wrapper */}
                   <div
-                    className="relative h-[260px] w-[250px] flex flex-col justify-between items-start px-6 py-6 overflow-hidden"
+                    className="relative h-[260px] w-[290px] lg:w-[230px] flex flex-col justify-between items-start px-6 py-6 overflow-hidden"
                     style={{
                       backgroundImage: `url(${VectorCard})`,
                       backgroundSize: "100% 100%",
