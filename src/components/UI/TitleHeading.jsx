@@ -47,7 +47,7 @@ const TitleHeading = ({ tag, heading, align = "left", text }) => {
       {tag && (
         <motion.button
           variants={item}
-          className="flex items-center gap-2 text-blue border-2 border-blue text-md font-medium px-4 py-2 rounded-full 
+          className="flex items-center gap-2 text-blue border-2 border-blue text-md font-semibold px-4 py-2 rounded-full 
           bg-[#F1F5FF] hover:bg-[#e5ecff] transition"
         >
           <img src={star} alt="star" height={2} />
@@ -58,7 +58,7 @@ const TitleHeading = ({ tag, heading, align = "left", text }) => {
       {heading && (
         <motion.h1
           variants={item}
-          className={`text-3xl sm:text-4xl md:text-5xl lg:text-[42px] font-bold ${text} leading-snug pt-3`}
+          className={`text-3xl sm:text-4xl md:text-5xl lg:text-[40px] font-bold ${text} leading-snug pt-3`}
         >
           {heading}
         </motion.h1>

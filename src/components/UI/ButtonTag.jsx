@@ -3,7 +3,7 @@ import React from 'react'
 
 const ButtonTag = ({tag}) => {
   return (
-    <button className="flex items-center gap-2 text-blue border-2 border-blue text-md font-medium px-4 py-2 rounded-full 
+    <button className="flex items-center gap-2 text-blue border-2 border-blue text-md font-semibold px-4 py-2 rounded-full 
              bg-[#F1F5FF] hover:bg-[#e5ecff] transition">
              <img src={star} alt="star" height={2} />
              {tag}

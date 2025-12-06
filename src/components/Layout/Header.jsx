@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BiMenuAltLeft } from "react-icons/bi";
 import logo from "../../../public/header/logo.png";
@@ -14,30 +14,31 @@ import X from "../../../public/social/x.png";
 import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 
 import Button from "../UI/Button";
+import ProductsMegaMenu, { categories } from "./ProductsMegaMenu";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
- const [openDropdown, setOpenDropdown] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const dropdownTimeoutRef = useRef(null);
 
+  const handleDropdownMouseEnter = () => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    setOpenDropdown(true);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(false), 200);
+  };
 
   const menu = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
-    { label: "Products", to: "/" },
-    { label: "Gallery", to: "/" },
+    { label: "Products", to: "/products" },
+    { label: "Gallery", to: "/gallery" },
     { label: "Blog", to: "/" },
-    { label: "FAQs", to: "/" },
+    { label: "FAQs", to: "/faqs" },
     { label: "Contact Us", to: "/" },
   ];
-  // const menu = [
-  //   { label: "Home", to: "/" },
-  //   { label: "About Us", to: "/about" },
-  //   { label: "Products", to: "/products" },
-  //   { label: "Gallery", to: "/gallery" },
-  //   { label: "Blog", to: "/blog" },
-  //   { label: "FAQs", to: "/faqs" },
-  //   { label: "Contact Us", to: "/contact" },
-  // ];
 
   return (
     <>
@@ -94,54 +95,38 @@ const Header = () => {
           <nav className="hidden xl:flex gap-10 text-[17px] font-semibold relative">
             {menu.map((item) =>
               item.label === "Products" ? (
-                <div key={item.to} className="group relative cursor-pointer">
-                  {/* Main Menu Item With Arrow */}
-                  <div className="flex items-center gap-1 text-black hover:!text-[#D80505]">
-                    <NavLink
-                      to={item.to}
-                      className={({ isActive }) =>
-                        `${isActive ? "text-black" : "text-black"}`
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-
-                    {/* Arrow */}
+                <div
+                  key={item.to}
+                  className="relative cursor-pointer"
+                  onMouseEnter={handleDropdownMouseEnter}
+                  onMouseLeave={handleDropdownMouseLeave}
+                >
+                  {/* Products label */}
+                  <div className="flex items-center gap-1 hover:text-[#B91E1E]">
+                    <span>Products</span>
                     <IoIosArrowDown
                       size={14}
-                      className="mt-[2px] group-hover:rotate-180 transition duration-300"
+                      className={`mt-[2px] transition-transform duration-300 ${
+                        openDropdown ? "rotate-180" : ""
+                      }`}
                     />
                   </div>
 
-                  {/* ================= DROPDOWN ON HOVER ================= */}
-                  <div className="absolute left-0 top-8 hidden group-hover:block bg-white shadow-lg rounded-lg w-48 py-3 z-[1000]">
-                    {/* Dropdown items → Replace with your Real Product pages */}
-                    {[
-                      "Product One",
-                      "Product Two",
-                      "Product Three",
-                      "Product Four",
-                    ].map((p, i) => (
-                      <NavLink
-                        key={i}
-                        to={`/`}
-                        // to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
-                        className="block px-6 py-2 hover:bg-[#D80505] hover:text-white transition"
-                      >
-                        {p}
-                      </NavLink>
-                    ))}
-                  </div>
+                  {/* MEGA MENU */}
+                  {openDropdown && (
+                    <div className="absolute top-full -left-[150%] z-50">
+                      <ProductsMegaMenu />
+                    </div>
+                  )}
                 </div>
               ) : (
-                // Normal Menu Items Except Products
                 <NavLink
                   key={item.to}
                   to={item.to}
                   className={({ isActive }) =>
                     `transition ${
-                      isActive ? "text-black" : "text-black"
-                    } hover:text-[#D80505]`
+                      isActive ? "text-[#B91E1E]" : "text-black"
+                    } hover:text-[#B91E1E]`
                   }
                 >
                   {item.label}
@@ -160,7 +145,7 @@ const Header = () => {
         </div>
       </header>
 
-       {/* ============================= MOBILE NAV MENU ============================= */}
+      {/* ============================= MOBILE NAV MENU ============================= */}
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-[999]"
@@ -183,12 +168,11 @@ const Header = () => {
 
         {/* Mobile Menu Items */}
         <nav className="flex flex-col gap-5 text-lg font-semibold">
-
           {menu.map((item) =>
             item.label === "Products" ? (
               <div key={item.label}>
                 <div
-                  className="flex justify-between items-center"
+                  className="flex justify-between items-center cursor-pointer"
                   onClick={() => setOpenDropdown(!openDropdown)}
                 >
                   <span>Products</span>
@@ -199,20 +183,20 @@ const Header = () => {
 
                 {openDropdown && (
                   <div className="ml-4 mt-2 flex flex-col gap-2">
-                    {[
-                      "Product One",
-                      "Product Two",
-                      "Product Three",
-                      "Product Four",
-                    ].map((p, i) => (
+                    {categories.map((item, i) => (
                       <NavLink
                         key={i}
-                        to={`/`}
-                        // to={`/products/${p.toLowerCase().replace(/ /g, "-")}`}
+                        to={item.url}
                         onClick={() => setMenuOpen(false)}
-                        className="text-gray-600 hover:text-black"
+                        className={({ isActive }) =>
+                          `hover:text-black ${
+                            isActive
+                              ? "text-red-600 font-bold"
+                              : "text-gray-600"
+                          }`
+                        }
                       >
-                        {p}
+                        {item.name}
                       </NavLink>
                     ))}
                   </div>
@@ -223,7 +207,9 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 onClick={() => setMenuOpen(false)}
-                className="hover:text-[#D80505]"
+                className={({ isActive }) =>
+                  isActive ? "text-red-600 font-bold" : "hover:text-[#B91E1E]"
+                }
               >
                 {item.label}
               </NavLink>

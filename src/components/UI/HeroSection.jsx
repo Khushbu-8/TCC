@@ -27,7 +27,7 @@ const HeroSection = ({ tag, title, description, showPlayButton = true }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ButtonTag tag={tag} />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <TitleHeading tag="" heading={title} align="left" />
 
             <motion.p

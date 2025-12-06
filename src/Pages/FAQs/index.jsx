@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
-import { HeroSection, TitleHeading } from "../../components/UI";
-import aboutGroupImg from "../../assets/AboutUsimages/About-group.png";
+
+import {  HeroSection,  } from "../../components/UI";
 import FAQSection from "../../components/Faq/FAQSection";
 
 
@@ -32,11 +31,30 @@ const FAQs = () => {
       answer:
         "Sustainable eco-friendly coating technologies are one of the leading modern trends.",
     },
+    {
+      question: "What factors should be considered when choosing a coating?",
+      answer:
+        "Sustainable eco-friendly coating technologies are one of the leading modern trends.",
+    },
+    {
+      question: "What challenges does the industry face?",
+      answer:
+        "Sustainable eco-friendly coating technologies are one of the leading modern trends.",
+    },
+    {
+      question: "What is the difference between industrial and decorative coatings?",
+      answer:
+        "Sustainable eco-friendly coating technologies are one of the leading modern trends.",
+    },
+    
   ];
   return (
     <main className="pt-0">
-      <HeroSection title="FAQs" tagline="FAQs" rightImage={aboutGroupImg} />
-
+      <HeroSection
+        title="Frequently Ask Questions"
+        tag="FAQs"
+        description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look."
+      />
        <FAQSection 
       faqData={faqData} 
       buttonText ="Load More"
