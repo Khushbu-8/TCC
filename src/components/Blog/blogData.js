@@ -2,7 +2,7 @@ import BlogImage1 from "../../../public/Home/BlogImage1.jpg";
 import BlogImage2 from "../../../public/Home/BlogImage2.jpg";
 import BlogImage3 from "../../../public/Home/BlogImage3.jpg";
 
-import BlogImage4 from "../../../public/blog/BlogImage4.png";
+import BlogImage4 from "../../../public/blog/BlogImage5.png";
 import BlogImage5 from "../../../public/blog/BlogImage5.png";
 import BlogImage6 from "../../../public/blog/BlogImage6.png";
 import BlogImage7 from "../../../public/blog/BlogImage7.png";
