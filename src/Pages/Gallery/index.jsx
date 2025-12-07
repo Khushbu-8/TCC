@@ -5,7 +5,6 @@ import { Gallery } from "../../components/Gallery";
 const GalleryPage = () => {
   return (
     <main className="pt-0">
-      {/* <HeroSection title="Gallery" tagline="Gallery" rightImage={aboutGroupImg} /> */}
       <HeroSection
         title="Surface Finishes Gallery"
         tag="Gallery"
