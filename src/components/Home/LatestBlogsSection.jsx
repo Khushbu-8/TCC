@@ -58,47 +58,48 @@ const LatestBlogsSection = () => {
         {/* Blog Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {blogData.map((item) => (
-           <div
-  key={item.id}
-  className="bg-white rounded-2xl shadow-sm border border-gray hover:border-red-600 
-  hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer p-5 group"
->
-  {/* Blog Thumbnail */}
-  <img
-    src={item.img}
-    alt="blog-img"
-    className="w-full h-60 object-cover rounded-t-2xl"
-  />
+            <div
+              key={item.id}
+              className="bg-white rounded-2xl shadow-sm border border-gray hover:border-red-600 
+               hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer p-5 group"
+            >
+              {/* Blog Thumbnail */}
+              <img
+                src={item.img}
+                alt="blog-img"
+                className="w-full h-60 object-cover rounded-t-2xl"
+              />
 
-  <div className="pt-3">
-    <p className="text-gray text-sm">{item.date}</p>
+              <div className="pt-3">
+                <p className="text-gray text-sm">{item.date}</p>
 
-    {/* 👇 Title turns red on hover */}
-    <h3
-      className="text-[20px] font-bold text-black mt-3 leading-snug group-hover:text-red-600 transition-colors duration-300"
-    >
-      {item.title}
-    </h3>
+                {/* 👇 Title turns red on hover */}
+                <h3 className="text-[20px] font-bold text-black mt-3 leading-snug group-hover:text-red-600 transition-colors duration-300">
+                  {item.title}
+                </h3>
 
-    {/* Footer: Author + Comments */}
-    <div className="flex items-center justify-between text-gray text-sm mt-6">
-      <div className="flex items-center gap-2">
-        <img
-          src={item.authorImg}
-          className="w-8 h-8 rounded-full border object-cover"
-          alt="author-img"
-        />
-        <span>{item.author}</span>
-      </div>
+                {/* Footer: Author + Comments */}
+                <div className="flex items-center justify-between text-gray text-sm mt-6">
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={item.authorImg}
+                      className="w-8 h-8 rounded-full border object-cover"
+                      alt="author-img"
+                    />
+                    <span>{item.author}</span>
+                  </div>
 
-      <div className="flex items-center gap-2">
-        <img src={comment} alt="comment" className="object-cover w-5" />
-        <span>{item.comments}</span>
-      </div>
-    </div>
-  </div>
-</div>
-
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={comment}
+                      alt="comment"
+                      className="object-cover w-5"
+                    />
+                    <span>{item.comments}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 

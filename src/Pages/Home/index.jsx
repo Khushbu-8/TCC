@@ -1,5 +1,4 @@
 import React from "react";
-import FadeInUp from "../../components/animations/FadeInUp"; // 🔥 import animation wrapper
 
 import { ScrollToTop } from "../../components/UI";
 import AboutIntroSection from "../../components/AboutUs/AboutIntroSection";
@@ -9,8 +8,8 @@ import ConnectWithTeam from "../../components/AboutUs/ConnectWithTeam";
 import LatestBlogsSection from "../../components/Home/LatestBlogsSection";
 import ProductsSection from "../../components/Home/ProductsSection";
 import FAQSection from "../../components/Faq/FAQSection";
-import { GallerySlider, Hero } from "../../components/Home";
 import TestimonialsSlider from "../../components/Home/TestimonialsSlider";
+import { Hero } from "../../components/Home";
 
 const Home = () => {
   const faqData = [
@@ -53,9 +52,9 @@ const Home = () => {
       <TestimonialsSlider />
 
       <BrandLogoSection />
- <div className="container">
-      <FAQSection faqData={faqData} buttonText="View More" />
-</div>
+      <div className="container">
+        <FAQSection faqData={faqData} buttonText="View More" />
+      </div>
       <ConnectWithTeam />
 
       <div className="container">

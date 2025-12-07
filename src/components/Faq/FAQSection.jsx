@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { Button, TitleHeading } from "../../components/UI";
+import { useState } from "react";
 
 const FAQSection = ({ faqData = [], buttonText }) => {
   const [openIndex, setOpenIndex] = useState(null);

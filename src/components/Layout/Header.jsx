@@ -35,9 +35,9 @@ const Header = () => {
     { label: "About Us", to: "/about" },
     { label: "Products", to: "/products" },
     { label: "Gallery", to: "/gallery" },
-    { label: "Blog", to: "/" },
+    { label: "Blog", to: "/blog" },
     { label: "FAQs", to: "/faqs" },
-    { label: "Contact Us", to: "/" },
+    { label: "Contact Us", to: "/contact" },
   ];
 
   return (

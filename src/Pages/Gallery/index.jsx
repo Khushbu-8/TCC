@@ -1,5 +1,4 @@
 import React from "react";
-import aboutGroupImg from "../../assets/AboutUsimages/About-group.png";
 import { HeroSection } from "../../components/UI";
 import { Gallery } from "../../components/Gallery";
 

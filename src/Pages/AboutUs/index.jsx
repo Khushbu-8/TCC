@@ -1,5 +1,4 @@
 import React from "react";
-import { AboutUs } from "../../components/Home";
 import { HeroSection } from "../../components/UI";
 import AboutIntroSection from "../../components/AboutUs/AboutIntroSection";
 import ConnectWithTeam from "../../components/AboutUs/ConnectWithTeam";
