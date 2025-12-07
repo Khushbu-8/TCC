@@ -104,9 +104,9 @@ const Footer = () => {
           <ul className="space-y-3 text-gray">
             {[
               { name: "About Us", link: "/about" },
-              { name: "Products", link: "/products" },
+              { name: "Products", link: "/products/cookware" },
               { name: "Privacy Policy", link: "/privacy-policy" },
-              { name: "Blogs", link: "/blogs" },
+              { name: "Blogs", link: "/blog" },
               { name: "Contact Us", link: "/contact" },
             ].map((item, index) => (
               <motion.li
@@ -128,7 +128,7 @@ const Footer = () => {
           <ul className="space-y-3 text-gray">
             {[
               { name: "FAQs", link: "/faqs" },
-              { name: "Terms & Conditions", link: "/terms-conditions" },
+              { name: "Terms & Conditions", link: "/privacy-policy" },
               { name: "Privacy Policy", link: "/privacy-policy" },
             ].map((item, index) => (
               <motion.li
