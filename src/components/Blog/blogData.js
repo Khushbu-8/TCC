@@ -2,15 +2,15 @@ import BlogImage1 from "../../../public/Home/BlogImage1.jpg";
 import BlogImage2 from "../../../public/Home/BlogImage2.jpg";
 import BlogImage3 from "../../../public/Home/BlogImage3.jpg";
 
-import BlogImage4 from "../../../public/blog/BlogImage5.png";
-import BlogImage5 from "../../../public/blog/BlogImage5.png";
-import BlogImage6 from "../../../public/blog/BlogImage6.png";
-import BlogImage7 from "../../../public/blog/BlogImage7.png";
-import BlogImage8 from "../../../public/blog/BlogImage8.png";
-import BlogImage9 from "../../../public/blog/BlogImage9.png";
-import BlogImage10 from "../../../public/blog/BlogImage10.png";
-import BlogImage11 from "../../../public/blog/BlogImage11.png";
-import BlogImage12 from "../../../public/blog/BlogImage12.png";
+import BlogImage4 from "../../../public/Blog/BlogImage5.png";
+import BlogImage5 from "../../../public/Blog/BlogImage5.png";
+import BlogImage6 from "../../../public/Blog/BlogImage6.png";
+import BlogImage7 from "../../../public/Blog/BlogImage7.png";
+import BlogImage8 from "../../../public/Blog/BlogImage8.png";
+import BlogImage9 from "../../../public/Blog/BlogImage9.png";
+import BlogImage10 from "../../../public/Blog/BlogImage10.png";
+import BlogImage11 from "../../../public/Blog/BlogImage11.png";
+import BlogImage12 from "../../../public/Blog/BlogImage12.png";
 
 import authorImg from "../../../public/Home/authorImage1.png";
 
