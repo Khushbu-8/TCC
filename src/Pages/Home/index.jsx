@@ -45,11 +45,12 @@ const Home = () => {
 
       <ProductsSection />
 
-      <div className="container">
+      <div className="container hidden">
         <WhyChooseUs />
       </div>
-
-      <TestimonialsSlider />
+      <div className="hidden">
+        <TestimonialsSlider className="hidden" />
+      </div>
 
       <BrandLogoSection />
       <div className="container">
