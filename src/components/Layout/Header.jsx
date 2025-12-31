@@ -105,7 +105,7 @@ const Header = () => {
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden xl:flex gap-10 font-semibold text-[17px]">
+          <nav className="hidden xl:flex gap-10 text-[17px]">
             {menu.map((item) =>
               item.label === "Products" || item.label === "Brands" ? (
                 <div
@@ -188,7 +188,7 @@ const Header = () => {
           <IoMdClose size={30} />
         </button>
 
-        <nav className="flex flex-col gap-5 text-lg font-semibold">
+        <nav className="flex flex-col gap-5 text-lg ">
           {menu.map((item) =>
             item.label === "Products" ? (
               <div key={item.label}>
