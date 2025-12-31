@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 
-const ProductsPage = () => {
-  const { category } = useParams();
+const BrandPage = () => {
+  const { brands } = useParams();
 
   return (
     <main className="pt-0">
       <h1 className="text-3xl font-bold">
-        {category ? category.replace(/-/g, " ") : "All Products"}
+        {brands ? brands.replace(/-/g, " ") : "All Brands"}
       </h1>
 
      
@@ -14,4 +14,4 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage;
+export default BrandPage;

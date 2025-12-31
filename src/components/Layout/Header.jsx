@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { IoIosArrowDown, IoMdClose } from "react-icons/io";
+
 import logo from "../../../public/header/logo.png";
 
 // SOCIAL IMAGES
@@ -10,30 +12,47 @@ import Linkedin from "../../../public/social/linkedin.png";
 import Whatsapp from "../../../public/social/whatsapp.png";
 import Mail from "../../../public/social/gmail.png";
 import X from "../../../public/social/x.png";
-// ↓ import arrow icon
-import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 
 import Button from "../UI/Button";
 import ProductsMegaMenu, { categories } from "./ProductsMegaMenu";
+import BrandsMegaMenu, { brands } from "./BrandsMegaMenu";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(false);
+
+  const [openProducts, setOpenProducts] = useState(false);
+  const [openBrands, setOpenBrands] = useState(false);
+
   const dropdownTimeoutRef = useRef(null);
 
-  const handleDropdownMouseEnter = () => {
+  // ================= DESKTOP HOVER =================
+  const handleEnter = (type) => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setOpenDropdown(true);
+
+    if (type === "products") {
+      setOpenProducts(true);
+      setOpenBrands(false); // close brands
+    } else {
+      setOpenBrands(true);
+      setOpenProducts(false); // close products
+    }
   };
 
-  const handleDropdownMouseLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(false), 200);
+  const handleLeave = (type) => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      if (type === "products") {
+        setOpenProducts(false);
+      } else {
+        setOpenBrands(false);
+      }
+    }, 200);
   };
 
   const menu = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
     { label: "Products", to: "/products" },
+    { label: "Brands", to: "/brands" },
     { label: "Gallery", to: "/gallery" },
     { label: "Blog", to: "/blog" },
     { label: "FAQs", to: "/faqs" },
@@ -42,33 +61,31 @@ const Header = () => {
 
   return (
     <>
-      {/* ============================= TOP BLACK BAR ============================= */}
-      <div className="w-full bg-black text-white py-3 px-4 hidden md:px-10 md:flex flex-wrap justify-between items-center rounded-b-3xl gap-y-3">
-        {/* Left Email + Phone */}
-        <div className="flex flex-wrap items-center gap-6 text-sm">
+      {/* ================= TOP BAR ================= */}
+      <div className="w-full bg-black text-white py-3 px-4 hidden md:flex justify-between items-center rounded-b-3xl">
+        <div className="flex items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
-            <span className="border border-white bg-gray w-8 h-8 rounded-full flex justify-center items-center">
+            <span className="border border-white w-8 h-8 rounded-full flex justify-center items-center">
               <img src={Gmail} className="w-4" />
             </span>
             <p>garry@empathy-technologies.com</p>
           </div>
 
-          <span className="hidden md:block h-6 w-[1px] bg-gray"></span>
+          <span className="h-6 w-[1px] bg-gray"></span>
 
           <div className="flex items-center gap-2">
-            <span className="border border-white bg-gray w-8 h-8 rounded-full flex justify-center items-center">
+            <span className="border border-white w-8 h-8 rounded-full flex justify-center items-center">
               <img src={Phone} className="w-4" />
             </span>
             <p>+91 63967 95374</p>
           </div>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex items-center gap-3">
+        <div className="flex gap-3">
           {[Linkedin, Whatsapp, Mail, X].map((icon, i) => (
             <span
               key={i}
-              className="border border-white bg-gray w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:bg-white hover:text-black transition"
+              className="border border-white w-8 h-8 rounded-full flex justify-center items-center hover:bg-white transition"
             >
               <img src={icon} className="w-4" />
             </span>
@@ -76,46 +93,57 @@ const Header = () => {
         </div>
       </div>
 
-      {/* ============================= MAIN NAVBAR ============================= */}
-      <header className="bg-white w-full py-4 flex flex-wrap items-center justify-between px-4 lg:px-12">
-        {/* Mobile Menu Button */}
+      {/* ================= NAVBAR ================= */}
+      <header className="bg-white w-full py-4 px-4 lg:px-12 flex justify-between items-center">
         <button className="lg:hidden" onClick={() => setMenuOpen(true)}>
           <BiMenuAltLeft size={30} />
         </button>
 
-        {/* Logo + Navigation */}
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center gap-6">
           <Link to="/">
-            <img src={logo} className="h-14 object-contain" />
+            <img src={logo} className="h-14" />
           </Link>
 
-          <span className="hidden xl:block h-6 border-l-2"></span>
-
-          {/* Desktop Nav */}
-          <nav className="hidden xl:flex gap-10 text-[17px] font-semibold relative">
+          {/* DESKTOP NAV */}
+          <nav className="hidden xl:flex gap-10 font-semibold text-[17px]">
             {menu.map((item) =>
-              item.label === "Products" ? (
+              item.label === "Products" || item.label === "Brands" ? (
                 <div
-                  key={item.to}
+                  key={item.label}
                   className="relative cursor-pointer"
-                  onMouseEnter={handleDropdownMouseEnter}
-                  onMouseLeave={handleDropdownMouseLeave}
+                  onMouseEnter={() =>
+                    handleEnter(
+                      item.label === "Products" ? "products" : "brands"
+                    )
+                  }
+                  onMouseLeave={() =>
+                    handleLeave(
+                      item.label === "Products" ? "products" : "brands"
+                    )
+                  }
                 >
-                  {/* Products label */}
                   <div className="flex items-center gap-1 hover:text-[#B91E1E]">
-                    <span>Products</span>
+                    {item.label}
                     <IoIosArrowDown
                       size={14}
-                      className={`mt-[2px] transition-transform duration-300 ${
-                        openDropdown ? "rotate-180" : ""
+                      className={`transition ${
+                        (item.label === "Products" && openProducts) ||
+                        (item.label === "Brands" && openBrands)
+                          ? "rotate-180"
+                          : ""
                       }`}
                     />
                   </div>
 
-                  {/* MEGA MENU */}
-                  {openDropdown && (
+                  {item.label === "Products" && openProducts && (
                     <div className="absolute top-full -left-[150%] z-50">
                       <ProductsMegaMenu />
+                    </div>
+                  )}
+
+                  {item.label === "Brands" && openBrands && (
+                    <div className="absolute top-full -left-[350%] z-50">
+                      <BrandsMegaMenu />
                     </div>
                   )}
                 </div>
@@ -124,9 +152,9 @@ const Header = () => {
                   key={item.to}
                   to={item.to}
                   className={({ isActive }) =>
-                    `transition ${
-                      isActive ? "text-[#B91E1E]" : "text-black"
-                    } hover:text-[#B91E1E]`
+                    isActive
+                      ? "text-[#B91E1E]"
+                      : "hover:text-[#B91E1E]"
                   }
                 >
                   {item.label}
@@ -136,16 +164,10 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* CTA BUTTON RIGHT */}
-        <div className="">
-          <Button
-            text="Get A Quote"
-            onClick={() => (window.location.href = "/")}
-          />
-        </div>
+        <Button text="Get A Quote" onClick={() => (window.location.href = "/")} />
       </header>
 
-      {/* ============================= MOBILE NAV MENU ============================= */}
+      {/* ================= MOBILE OVERLAY ================= */}
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-[999]"
@@ -153,12 +175,12 @@ const Header = () => {
         />
       )}
 
+      {/* ================= MOBILE MENU ================= */}
       <div
-        className={`fixed top-0 left-0 w-full bg-white z-[1000] p-6 space-y-6 shadow-xl transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full bg-white z-[1000] p-6 transition-all duration-500 ${
           menuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        {/* Close Button */}
         <button
           className="absolute top-4 right-4"
           onClick={() => setMenuOpen(false)}
@@ -166,37 +188,55 @@ const Header = () => {
           <IoMdClose size={30} />
         </button>
 
-        {/* Mobile Menu Items */}
         <nav className="flex flex-col gap-5 text-lg font-semibold">
           {menu.map((item) =>
             item.label === "Products" ? (
               <div key={item.label}>
                 <div
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={() => setOpenDropdown(!openDropdown)}
+                  className="flex justify-between"
+                  onClick={() => {
+                    setOpenProducts(!openProducts);
+                    setOpenBrands(false);
+                  }}
                 >
-                  <span>Products</span>
-                  <IoIosArrowDown
-                    className={`transition ${openDropdown ? "rotate-180" : ""}`}
-                  />
+                  Products <IoIosArrowDown />
                 </div>
 
-                {openDropdown && (
+                {openProducts && (
                   <div className="ml-4 mt-2 flex flex-col gap-2">
-                    {categories.map((item, i) => (
+                    {categories.map((c, i) => (
                       <NavLink
                         key={i}
-                        to={item.url}
+                        to={c.url}
                         onClick={() => setMenuOpen(false)}
-                        className={({ isActive }) =>
-                          `hover:text-black ${
-                            isActive
-                              ? "text-red-600 font-bold"
-                              : "text-gray-600"
-                          }`
-                        }
                       >
-                        {item.name}
+                        {c.name}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : item.label === "Brands" ? (
+              <div key={item.label}>
+                <div
+                  className="flex justify-between"
+                  onClick={() => {
+                    setOpenBrands(!openBrands);
+                    setOpenProducts(false);
+                  }}
+                >
+                  Brands <IoIosArrowDown />
+                </div>
+
+                {openBrands && (
+                  <div className="ml-4 mt-2 flex flex-col gap-2">
+                    {brands.map((b, i) => (
+                      <NavLink
+                        key={i}
+                        to={b.url}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {b.name}
                       </NavLink>
                     ))}
                   </div>
@@ -207,9 +247,6 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 onClick={() => setMenuOpen(false)}
-                className={({ isActive }) =>
-                  isActive ? "text-red-600 font-bold" : "hover:text-[#B91E1E]"
-                }
               >
                 {item.label}
               </NavLink>

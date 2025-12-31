@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { IoIosArrowForward } from "react-icons/io";
 import sprayImg from "../../../public/products/spray.png";
 
 export const categories = [

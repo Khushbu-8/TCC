@@ -12,6 +12,10 @@ import GalleryPage from "./Pages/Gallery";
 import FAQs from "./Pages/FAQs";
 import { ScrollUp } from "./components/UI";
 import ProductsPage from "./Pages/Product";
+import BlogPage from "./Pages/Blog";
+import ContactUsPage from "./Pages/ConactUs";
+import BlogDetail from "./components/Blog/BlogDetailsSection";
+import PrivacyPolicyPage from "./Pages/PrivacyPolicy";
 
 // PRODUCT CATEGORY PAGES
 import Cookware from "./Pages/Product/Cookware";
@@ -20,10 +24,15 @@ import ElectricalAppliance from "./Pages/Product/ElectricalAppliance";
 import SpecialtyCoatings from "./Pages/Product/SpecialtyCoatings";
 import UVCoatings from "./Pages/Product/UVCoatings";
 import IndustrialCoatings from "./Pages/Product/IndustrialCoatings";
-import BlogPage from "./Pages/Blog";
-import ContactUsPage from "./Pages/ConactUs";
-import BlogDetail from "./components/Blog/BlogDetailsSection";
-import PrivacyPolicyPage from "./Pages/PrivacyPolicy";
+
+// BRAND PAGES
+import BrandPage from "./Pages/Brands";
+import ProtectixPlus from "./Pages/Brands/ProtectixPlus";
+import Shieldon from "./Pages/Brands/Shieldon";
+import ShieldonPlus from "./Pages/Brands/ShieldonPlus";
+import Ceragreen from "./Pages/Brands/Ceragreen";
+import Protectix from "./Pages/Brands/Protectix";
+
 
 function App() {
   return (
@@ -32,33 +41,40 @@ function App() {
 
       <Routes>
         <Route path="/" element={<MainLayout />}>
+
           {/* HOME */}
           <Route index element={<Home />} />
+
           {/* ABOUT */}
           <Route path="about" element={<AboutUsPage />} />
-          {/* PRODUCTS MAIN PAGE */}
+
+          {/* PRODUCTS */}
           <Route path="products">
             <Route index element={<ProductsPage />} />
-
-            {/* PRODUCT CATEGORY ROUTES */}
             <Route path="cookware" element={<Cookware />} />
             <Route path="bakeware" element={<Bakeware />} />
-            <Route
-              path="electrical-appliance"
-              element={<ElectricalAppliance />}
-            />
+            <Route path="electrical-appliance" element={<ElectricalAppliance />} />
             <Route path="specialty-coatings" element={<SpecialtyCoatings />} />
             <Route path="uv-coatings" element={<UVCoatings />} />
-            <Route
-              path="industrial-coatings"
-              element={<IndustrialCoatings />}
-            />
+            <Route path="industrial-coatings" element={<IndustrialCoatings />} />
+
           </Route>
+
+          {/* BRANDS */}
+          <Route path="brands">
+            <Route index element={<BrandPage />} />
+            <Route path="protectix" element={<Protectix />} />
+            <Route path="protectix-plus" element={<ProtectixPlus />} />
+            <Route path="shieldon" element={<Shieldon />} />
+            <Route path="shieldon-plus" element={<ShieldonPlus />} />
+            <Route path="ceragreen" element={<Ceragreen />} />
+          </Route>
+
+          {/* OTHER PAGES */}
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="blog" element={<BlogPage />} />
-          <Route path="blog/:id" element={<BlogDetail />} /> {/* 👈 ADD THIS */}
+          <Route path="blog/:id" element={<BlogDetail />} />
           <Route path="contact" element={<ContactUsPage />} />
-          {/* FAQS */}
           <Route path="faqs" element={<FAQs />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
 

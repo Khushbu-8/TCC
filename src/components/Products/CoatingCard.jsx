@@ -62,7 +62,7 @@ const CoatingCard = ({
             {title}
           </h2>
 
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="text-gray leading-relaxed mb-6">
             {description}
           </p>
 
